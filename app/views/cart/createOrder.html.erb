@@ -1,0 +1,79 @@
+<h1>Your order is confirmed.</h1>
+
+<% @orders.limit(1).order(id: :desc).each do |order| %>
+    Order Number: <%= order.id %>
+<% end %>
+
+<br>
+<br>
+
+<div id="itemsContainer">
+    <table id="customers">
+        
+        <tr>
+            <th>Product</th>
+            <th>Unit Price</th>
+            <th>Quantity</th>
+            <th>Subtotal</th>
+        </tr>
+        
+        <% total = 0 %>
+        <% @orderproducts.each do |id, quantity| %>
+            <% product = Orderproduct.find_by_id(id) %>
+        
+            <tr>
+                <td class="title"><%= product.title %></td>
+                <td class="price"><%= number_to_currency(product.price, :unit =>"€") %></td>
+                <td class="title"><%= product.quantity %></td>
+                <td class="price"><%= number_to_currency(product.quantity * product.price, :unit =>"€") %></td>
+            </tr>
+            
+            <% total += product.quantity * product.price %>
+        
+            
+        <% end %>
+        
+        <tr>
+            <td></td>
+            <td></td>
+            <td>Products Total:</td>
+            <td><%= number_to_currency(total, :unit => "€") %></td>
+        </tr>
+        
+        <% if total > 50  %>
+            <% delivery = 0 %>
+        <% else %>
+            <% delivery = 10 %>
+        <% end %>
+        
+        <tr>
+            <td></td>
+            <td></td>
+            <td>Delivery:</td>
+            <td><%= number_to_currency(delivery, :unit => "€") %></td>
+        </tr>
+        
+        <% @overalltotal = total + delivery %>
+
+        <tr>
+            <td></td>
+            <td></td>
+            <td>Order Total:</td>
+            <td><%= number_to_currency(@overalltotal, :unit => "€") %></td>
+        </tr>
+
+        
+    </table>
+    
+    <% @orders.limit(1).order(id: :desc).each do |order| %>
+        <a href='/paid/<%= order.id %>' class="button">Pay Now</a>
+        
+            <script src="https://www.paypal.com/sdk/js?client-id=sb"></script>
+    <script>
+    paypal.Buttons().render('body');
+    </script>
+
+    <% end %>
+    
+
+</div>    

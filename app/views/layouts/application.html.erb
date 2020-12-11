@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= yield(:title) %> |No 1 Giftshop</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+   <header class="headSec">
+      <h1>No 1 Giftshop</h1>
+      
+      <ul>
+        
+        <li><%= link_to "HomePage",  "/" %></li>
+        <li><%= link_to "ProductCatalog", "/productCatalog"  %></li>
+        <li><%= link_to "Delivery", "/deliveryInfo"  %></li>
+        <li><%= link_to "ContactUs", "/contactUs"  %></li>
+        <li><%= link_to "Cart", "/cart"  %></li>
+        
+        <% if user_signed_in? %>
+          <li><a href="#">Hi <%= current_user.email %></a></li>
+          <li><%= link_to 'Log Out', destroy_user_session_path, :method => :delete %></li>
+          <li><%= link_to "Admin", "/admin"  %></li>
+        <% else %>
+          <li><%= link_to 'Log In', new_user_session_path %></li>
+          <li><%= link_to 'Sign Up', new_user_registration_path %></li> 
+        <% end %>
+        
+        
+       
+    
+
+    
+        
+
+        
+      </ul>
+      
+              <%= form_tag("/search", :method => "post") do %>
+          <div class="testing">
+            <%= text_field_tag(:q, "Search product") %>
+            <%= submit_tag("Search") %>
+          </div>
+            <% end %>
+      
+    </header>
+    
+    <div class="container">
+    <%= yield %>
+    </div>
+    
+    <footer class="foot">
+      <P>Copyright &copy; 2020</p>
+    </footer>
+
+  </body>
+</html>

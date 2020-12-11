@@ -1,0 +1,86 @@
+<% if @order.user.email == current_user.email %>
+
+  <p id="notice"><%= notice %></p>
+  
+  <p>
+    <strong>Order Date:</strong>
+    <%= @order.created_at %>
+  </p>
+  
+  <p>
+    <strong>User:</strong>
+    <%= @order.user.email %>
+  </p>
+  
+  <p>
+    <strong>Status:</strong>
+    <%= @order.status %>
+  </p>
+  
+  <div id="itemsContainer">
+      <table id="customers">
+          
+          <tr>
+              <th>Product</th>
+              <th>Unit Price</th>
+              <th>Quantity</th>
+              <th>Subtotal</th>
+          </tr>
+          
+          <% total = 0 %>
+          <% @orderproducts.each do |id, quantity| %>
+              <% product = Orderproduct.find_by_id(id) %>
+          
+              <tr>
+                  <td class="title"><%= product.title %></td>
+                  <td class="price"><%= number_to_currency(product.price, :unit =>"€") %></td>
+                  <td class="title"><%= product.quantity %></td>
+                  <td class="price"><%= number_to_currency(product.quantity * product.price, :unit =>"€") %></td>
+              </tr>
+              
+              <% total += product.quantity * product.price %>
+          
+              
+          <% end %>
+          
+          <tr>
+              <td></td>
+              <td></td>
+              <td>Products Total:</td>
+              <td><%= number_to_currency(total, :unit => "€") %></td>
+          </tr>
+          
+          <% if total > 50  %>
+              <% delivery = 0 %>
+          <% else %>
+              <% delivery = 10 %>
+          <% end %>
+          
+          <tr>
+              <td></td>
+              <td></td>
+              <td>Delivery:</td>
+              <td><%= number_to_currency(delivery, :unit => "€") %></td>
+          </tr>
+          
+          <% @overalltotal = total + delivery %>
+  
+          <tr>
+              <td></td>
+              <td></td>
+              <td>Order Total:</td>
+              <td><%= number_to_currency(@overalltotal, :unit => "€") %></td>
+          </tr>
+  
+          
+      </table>
+      
+  </div> 
+  
+  <%= link_to 'Back', orders_path %>
+  
+<% else %>
+  
+  <h2>Sorry, you are not allowed to access this page</h2>
+
+<% end %>

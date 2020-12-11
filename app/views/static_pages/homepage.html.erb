@@ -1,0 +1,37 @@
+
+<% provide(:title,"Home")%>
+
+<div class="mainCont">
+    
+<%= image_tag("giftshopmain2.jpg", alt: "Welcome Logo", :class => "welcomeIm") %>    
+    
+    
+<h1>Ireland's Favourite GiftShop</h1>
+
+
+<br>
+<br>
+<p><h1>Glad that you are here!</h1></p>
+</div>
+</br></br>
+<div class="mainCont">
+     <h1>Categories</h1>
+     
+     <% @categories.each do |category| %>
+    <div class="producthols">
+        <h1><%= category.title %></h1>
+        <a href="/category/<%=category.title%>"> <img src="/assets/<%=category.image%>" alt="<%category.title%>"/></a>
+        <p><%= category.description %></p>
+      
+        </div>
+        <% end %>
+        
+     
+</div>
+<div class="mainCont">
+     <h1>Popular Products</h1>
+    
+    <%=render'layouts/popular'%>
+    
+</div>
+

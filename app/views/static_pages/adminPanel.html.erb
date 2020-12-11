@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+    
+<h1>User administration</h1>
+
+
+
+<% @users.each do |user| %>
+
+
+  <p>Id <%= user.id %></p>
+  <p>Id <%= user.email %></p>
+  <p>Role <%= user.admin %></p>
+  <a href="/assignAdmin/<%= user.id %>" class="button">Assign admin rights to <%= user.email %></a>
+  <a href="/unassignAdmin/<%= user.id %>" class="button">Remove admin rights from <%= user.email %></a>
+
+
+<% end %>
+
+
+
+
+
+
+
+<h1>Orders</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Order Date</th>
+      <th>User</th>
+      <th>Status</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @orders.each do |order| %>
+      <tr>
+        <td><%= order.created_at %></td>
+        <td><%= order.user.email %></td>
+        <td><%= order.status %></td>
+        <td><%= link_to 'Show', order %></td>
+        <td><%= link_to 'Edit', edit_order_path(order) %></td>
+        <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Order', new_order_path %>
