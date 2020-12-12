@@ -46,6 +46,7 @@ Rails.application.routes.draw do
     get '/assignAdmin/:id' => 'static_pages#assignAdmin'
  
   get '/unassignAdmin/:id' => 'static_pages#unassignAdmin'
+  get '/orders' => 'orders#index'
   
 
 

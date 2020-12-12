@@ -39,6 +39,7 @@
             </tr>
             
             <% total += quantity * product.price %>
+            <% session[:activeCart] = total %>
         <% end %>
         
         <tr></tr>
