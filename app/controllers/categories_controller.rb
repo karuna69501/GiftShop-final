@@ -4,6 +4,13 @@ class CategoriesController < ApplicationController
   # GET /categories
   # GET /categories.json
   def index
+    if user_signed_in?  &&  current_user.admin == true
+      
+    else
+      redirect_to "/"
+      
+    end  
+
     @categories = Category.all
   end
 

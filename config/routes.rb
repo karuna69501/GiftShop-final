@@ -3,6 +3,8 @@ Rails.application.routes.draw do
     resources:orderproducts
   end
   
+  resources :categories
+  
   devise_for :users
   get 'cart/index'
   
@@ -41,11 +43,12 @@ Rails.application.routes.draw do
   
   post'/search' => 'products#search'
   
-  get '/category/:title'=> 'static_pages#category'
+  get '/category/:title' => 'static_pages#category'
   
-    get '/assignAdmin/:id' => 'static_pages#assignAdmin'
+  get '/assignAdmin/:id' => 'static_pages#assignAdmin'
  
   get '/unassignAdmin/:id' => 'static_pages#unassignAdmin'
+  
   get '/orders' => 'orders#index'
   
 

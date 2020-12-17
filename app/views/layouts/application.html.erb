@@ -6,18 +6,30 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
   </head>
 
   <body>
    <header class="headSec">
-      <h1>No 1 Giftshop</h1>
-      
+      <h1 class="pageTitle"><i class="fa fa-shopping-bag" aria-hidden="true"></i> No 1 Giftshop</h1>
+      <div class="cartSummary">
+        <a href="/cart">
+          <i class="fa fa-shopping-cart"></i>
+          <%= number_to_currency(session[:activeCart], :unit =>"€") %>
+        </a>
+      </div>
       <ul>
-        
-        <li><%= link_to "HomePage",  "/" %></li>
-        <li><%= link_to "ProductCatalog", "/productCatalog"  %></li>
+        <li>          <%= form_tag("/search", :method => "post") do %>
+          <div class="searchBox">
+            <%= text_field_tag(:q, "Search product") %>
+            <%= submit_tag("Search") %>
+          </div>
+            <% end %></li>
+        <li><%= link_to "Home Page",  "/" %></li>
+        <li><%= link_to "Product Catalog", "/productCatalog"  %></li>
         <li><%= link_to "Delivery", "/deliveryInfo"  %></li>
-        <li><%= link_to "ContactUs", "/contactUs"  %></li>
+        <li><%= link_to "Contact Us", "/contactUs"  %></li>
         <li><%= link_to "Cart", "/cart"  %></li>
         
         <% if user_signed_in? %>
@@ -27,37 +39,21 @@
           <% if current_user.admin? %>
           <li><%= link_to "Admin", "/admin"  %></li>
            <% end %>
-          
         <% else %>
           <li><%= link_to 'Log In', new_user_session_path %></li>
           <li><%= link_to 'Sign Up', new_user_registration_path %></li> 
         <% end %>
-        
-        
-       <li><a href="/cart">Total: <%= session[:activeCart] %></a></li>
-    
-
-    
-        
-
-        
+ 
       </ul>
       
-              <%= form_tag("/search", :method => "post") do %>
-          <div class="testing">
-            <%= text_field_tag(:q, "Search product") %>
-            <%= submit_tag("Search") %>
-          </div>
-            <% end %>
-      
-    </header>
+       </header>
     
     <div class="container">
     <%= yield %>
     </div>
     
     <footer class="foot">
-      <P>Copyright &copy; 2020</p>
+      <p>&copy; No 1 Giftshop 2020 All Rights Reserved</p>
     </footer>
 
   </body>

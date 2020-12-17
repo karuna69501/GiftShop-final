@@ -30,6 +30,7 @@
                         <% if session[:login] ==1 %>
                           <%= link_to 'Edit', edit_product_path(product) %>
                           <%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %>
+                          
                         <%else%>
                         
                           <a href="/cart/<%= product.id %>">Add to Cart</a>

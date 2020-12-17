@@ -1,14 +1,12 @@
-<table class="catalog">
+<div class="catalog">
     
       <% @products.limit(8).order(:id).each do |product| %>
         <div class="producthols">
         <h1><%= product.title %></h1>
-        <a href="/category/<%=product.title%>"> <img src="/assets/<%=product.image_url%>" alt="<%product.title%>"/></a>
+        <a href="/products/<%= product.id %>"> <img src="/assets/<%= product.image_url %>" alt="<%= product.title %>"/></a>
         <p><%= product.description %></p>
       
         </div>
       <% end %>
-        
- 
-</table>
 
+</div>

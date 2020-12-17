@@ -15,27 +15,26 @@
  */
  
  /*Set font, narrow the webstie to 80% width and center it, set color */
-/* body{
+body{
 	font-family: Roboto, sans-serif;
-	width: 100%;
+	width: 95%;
     margin: 0 auto;
-	color: #646464;
-	
 }
-*/
+
 .headSec {
     background: url("/assets/site/giftshop.jpg");
     background-repeat: no-repeat;
     background-size:100% 100%;
     min-height:10px;
     width: 100%;
+    margin-top: -50px;
     margin-bottom:10px;
     overflow: auto;
-    text-align: center;
+    text-align: left;
 }
 
 .headSec h1 {
-    color:#242422;
+    color:#333;
     font-size: 80px;
     padding: 15px;
 }
@@ -45,7 +44,7 @@
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #651111;
+    background-color: #333;
     color: white;
     
 }
@@ -62,17 +61,14 @@
     color: white;
 }
 
-a:hover {
-  background-color: #974040;
+.headSec a:hover {
+  background-color: #4d4d4d;
 }
 
-a:hover {
-  background-color: #974040;
-}
 
-.testing{
-  float: center;
-  padding: 6px;
+.searchBox{
+  float: left;
+  padding: 6px 10px;
   margin-top: 8px;
   margin-right: 16px;
 }
@@ -80,20 +76,36 @@ a:hover {
 
 .mainCont { 
     margin: auto;
-    width:100%;
-    border: 3px solid #b3e0ff;
+    border: 3px solid #651111;
     padding: 10px;
     text-align: center;
+    color: #646464;
 }
 
-.welcomeIm {width: 90%;}
+.welcomeIm {width: 100%;}
+
+.delivery{
+    margin:auto;
+    border:3px solid #651111;
+    padding:10px;
+    text-align: center;
+    text-decoration: none;
+    color: #646464;
+}
+
+.delivery h1{
+    color: #651111;
+}
+
 
 
 .foot {
-    background-color: #b3e0ff;
-    color:#000000;
-    margin-top: 10px;
-    padding: 1px;
+    background-color: #e8e8e8;
+    border-top-style: solid;
+    border-top-color: #cecece;
+    border-top-width: thin;
+    color: #949494;
+    margin-top: 100px;
     overflow: auto;
     margin-left: auto;
     margin-right: auto;
@@ -104,19 +116,15 @@ a:hover {
 #productsContainer {
     width: 100%;
     text-align: center;
-    
-    
 }
 
 
 #productsContainer h1 {
-   display: block;
-    color: #4CAF50;
+    display: block;
+    color: #b8860b;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
-    
-    
 }
 
 
@@ -134,7 +142,7 @@ a:hover {
 
 .producthols h1 {
    display: block;
-    color: #4CAF50;
+    color: #b8860b;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
@@ -145,14 +153,13 @@ a:hover {
 
 .producthols p {
    display: block;
-    color: #4CAF50;
+    color: #646464;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
     font-size: 16px
     
 }
-
 
 
 .productholsIm {
@@ -165,7 +172,7 @@ a:hover {
 
 
 .button {
-    background-color: #4CAF50;
+    background-color: #00e600;
     border: none;
     color: white;
     padding: 15px 32px;
@@ -187,13 +194,15 @@ a:hover {
 }
 
 .contactInfo1p1{
-font-size: 200%;
-font-weight: bold;
+    font-size: 200%;
+    font-weight: bold;
+    color: #651111;
+    
 }
 
 .contactInfo2p1{
-font-size: 100%;
-font-weight: bold;
+    font-size: 100%;
+    font-weight: bold;
 }
 
 /* Style email address*/
@@ -202,4 +211,187 @@ font-weight: bold;
 	font-size: 100%;
 	font-weight: normal;
 	text-decoration: none;
+}
+
+.contactInfo2 a:hover {
+	background-color: #e6e600;
+}
+
+
+#customers {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+
+#customers td, #customers th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #116565;
+    color: white;
+}
+ 
+/*Index*/
+.giftbox{
+    float: left;
+	margin-right: 2%;
+	margin-bottom: 2%;
+	width: 40%;
+	height: 40%;
+	box-sizing: border-box;
+}
+
+.indexDescription{
+	width: 48%;
+	float: left;
+	line-height: 30px;
+	text-align: center;
+	margin-top: -25px;
+	padding-top: 100px;
+	box-sizing: border-box;
+	color: #b8860b;
+}
+
+/*Clear floats*/
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.cartSummary{
+  padding: 6px 10px;
+  margin-top: 8px;
+  margin-right: 16px;
+  text-align: right;
+  color: red;
+}
+
+.cartSummary a{
+    padding: 12px 15px 10px 15px;
+    background: #fff;
+    box-shadow: #dbdbdb 0 -1px 0 inset, 
+                #dbdbdb 0 1px 0 inset, 
+                #dbdbdb 1px 0 0 inset, 
+                #dbdbdb -1px 0 0 inset;
+    border-radius: 5px;
+    margin-left: 4px;
+    margin-top: -50px;
+    transition: all 0.2s ease-in-out;
+    color: #333;
+    position: relative;
+    bottom: 60px;
+    right: 10px;
+    font-size: 16px;
+}
+
+.cartSummary i {
+    color: black;
+    font-size:24px;
+}
+
+.cartSummary a:hover {
+  background-color: #daa520;
+}
+
+.pageTitle{
+    text-align: center;
+    position: relative;
+    top: 60px;
+    right: 10px;
+  }
+  
+.pageTitle i{
+    color: #b8860b;
+}
+
+
+.buttonCart {
+    background-color: #651111;
+    border: none;
+    color: red;
+    padding: 4px 8px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: bold;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.buttonCart:hover {
+  background-color: #974040;
+}
+
+
+.buttonCart:visited {
+  color: white;
+}
+
+.buttonCart:link {
+  color: white;
+}
+
+
+.buttonAdmin{
+    background-color: #20b2aa;
+    border: none;
+    color: white;
+    padding: 4px 8px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.buttonAdmin:visited {
+  color: white;
+}
+
+.seeAll{
+    font-size: 20px;
+    text-align: right;
+}
+
+.buttonProduct{
+    background-color: #009a00;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.buttonProduct:visited {
+  color: white;
+}
+
+.buttonProduct:hover {
+  background-color: #333333;
+}
+
+.newProduct{
+    text-align: right;
+}
+
+.addNew{
+    text-align: center;
 }

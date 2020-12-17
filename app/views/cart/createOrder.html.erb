@@ -29,8 +29,7 @@
             </tr>
             
             <% total += product.quantity * product.price %>
-        
-            
+
         <% end %>
         
         <tr>
@@ -65,15 +64,21 @@
         
     </table>
     
-    <% @orders.limit(1).order(id: :desc).each do |order| %>
-        <a href='/paid/<%= order.id %>' class="button">Pay Now</a>
-        
-            <script src="https://www.paypal.com/sdk/js?client-id=sb"></script>
-    <script>
-    paypal.Buttons().render('body');
-    </script>
-
-    <% end %>
+    <div class="newProduct">
     
+        <% @orders.limit(1).order(id: :desc).each do |order| %>
+            
+        <a href='/paid/<%= order.id %>' class="buttonProduct">Pay Now</a>
+    
+        <% end %>
+        
+    </div>
+    
+        <script src="https://www.paypal.com/sdk/js?client-id=sb"></script>
+    
+        <script>paypal.Buttons().render('body');</script>
 
 </div>    
+
+
+   

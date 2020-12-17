@@ -1,31 +1,52 @@
-<p id="notice"><%= notice %></p>
-
-    
-<h1>User administration</h1>
-
-
-
-<% @users.each do |user| %>
+<div class="addNew">
+  <%= link_to 'Manage Categories', categories_path, :class => "buttonProduct", :role => "button"  %>
+  <%= link_to 'Add New Product',  new_product_path, :class => "buttonProduct", :role => "button" %>
+  <%= link_to 'Add New Order', new_order_path, :class => "buttonProduct", :role => "button"  %>
+   
+</div>
 
 
-  <p>Id <%= user.id %></p>
-  <p>Id <%= user.email %></p>
-  <p>Role <%= user.admin %></p>
-  <a href="/assignAdmin/<%= user.id %>" class="button">Assign admin rights to <%= user.email %></a>
-  <a href="/unassignAdmin/<%= user.id %>" class="button">Remove admin rights from <%= user.email %></a>
+<div id="productsContainer">
+  
+  <h1>User administration</h1>
+    <table id="customers">
+      <tr>
+          <th>Id</th>
+          <th>User Email</th>
+          <th>Date of Joining</th>
+          <th>Admin</th>
+          <th>Change admin permissions</th>
+      </tr>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= user.id %></td>
+          <td><%= user.email %></td>
+          <td><%= user.created_at %></td>
+          <td>
+            <% if user.admin? %>
+              YES
+            <% else %>
+              NO
+            <% end %>
+          </td>
+          <td>
+            <a href="/assignAdmin/<%= user.id %>" class="buttonAdmin">Add</a>
+            <a href="/unassignAdmin/<%= user.id %>" class="buttonAdmin">Remove</a>
+          </td>
+        </tr>
+      <% end %>
+      
+ 
+      
+    </table>
+</div>
+
+ 
 
 
-<% end %>
-
-
-
-
-
-
-
-<h1>Orders</h1>
-
-<table>
+<div id="productsContainer">
+  <h1>Orders</h1>
+    <table id="customers">
   <thead>
     <tr>
       <th>Order Date</th>
@@ -34,6 +55,8 @@
       <th colspan="3"></th>
     </tr>
   </thead>
+
+ 
 
   <tbody>
     <% @orders.each do |order| %>
@@ -49,6 +72,9 @@
   </tbody>
 </table>
 
-<br>
+ 
 
-<%= link_to 'New Order', new_order_path %>
+<br>
+</div>
+
+<h2><%= link_to 'Create New Order', new_order_path %></h2>

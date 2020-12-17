@@ -1,6 +1,4 @@
-<p id="notice"><%= notice %></p>
-
- <div id="productsContainer">
+<div id="productsContainer">
   
   <h1>Products</h1>
    <% @products.each do |product| %>
@@ -15,16 +13,25 @@
        Brand: <%= product.brand %></p>
        
       <p>
-       <%= link_to 'Show',  product, :class => "button", :role => "button" %>
-       <% if session[:login] == 1%>
-        <%= link_to 'Edit',  edit_product_path(product), :class => "button", :role => "button" %>
-        <%= link_to 'Destroy',  product, method: :delete, data: { confirm: 'Are you sure?' }, :class => "button", :role => "button" %>
-       <% end %>
-       <a href="/cart/<%= product.id %>" class="button">Add To Cart</a>
+       <%= link_to 'Show',  product, :class => "buttonProduct", :role => "button" %>
+
+      <% if user_signed_in?  &&  current_user.admin == true %>
+        <%= link_to 'Edit',  edit_product_path(product), :class => "buttonProduct", :role => "button" %>
+        <%= link_to 'Destroy',  product, method: :delete, data: { confirm: 'Are you sure?' }, :class => "buttonProduct", :role => "button" %>
+      <% end %>
+       <a href="/cart/<%= product.id %>" class="buttonProduct">Add To Cart</a>
       </p>
+      
+      
     </div>
    <% end %>
 </div>
-<br>
-<%= link_to 'New product',  new_product_path, :class => "button", :role => "button" %>
 
+<div class="newProduct">
+  <% if user_signed_in?  &&  current_user.admin == true %>
+
+  <%= link_to 'Add New Product',  new_product_path, :class => "buttonProduct", :role => "button" %>
+  
+  <% end %>
+ 
+</div>
