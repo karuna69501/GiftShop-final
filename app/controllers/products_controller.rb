@@ -19,19 +19,22 @@ class ProductsController < ApplicationController
 
   # GET /products/new
   def new
+    if user_signed_in?  &&  current_user.admin == true
     @product = Product.new
+    else
+      redirect_to "/"
+    end  
   end
 
   # GET /products/1/edit
   def edit
     if user_signed_in?  &&  current_user.admin == true
-      
+    
     else
       redirect_to "/"
-      
     end  
   end
-
+  
   # POST /products
   # POST /products.json
   def create

@@ -8,7 +8,7 @@
 <br>
 
 <div id="itemsContainer">
-    <table id="customers">
+    <table id="cartOrder">
         
         <tr>
             <th>Product</th>
@@ -48,7 +48,7 @@
         <tr>
             <td></td>
             <td></td>
-            <td>Delivery:</td>
+            <td>Delivery*:</td>
             <td><%= number_to_currency(delivery, :unit => "€") %></td>
         </tr>
         
@@ -63,7 +63,7 @@
 
         
     </table>
-    
+ 
     <div class="newProduct">
     
         <% @orders.limit(1).order(id: :desc).each do |order| %>
@@ -74,10 +74,15 @@
         
     </div>
     
+    <div id="itemsContainer">
+    <h4>* Delivery free for the orders above €50</h4>
+    </div>
+  
+
         <script src="https://www.paypal.com/sdk/js?client-id=sb"></script>
     
         <script>paypal.Buttons().render('body');</script>
-
+ 
 </div>    
 
 

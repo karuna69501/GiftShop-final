@@ -21,11 +21,20 @@ class CategoriesController < ApplicationController
 
   # GET /categories/new
   def new
-    @category = Category.new
+    if user_signed_in?  &&  current_user.admin == true
+      @category = Category.new
+    else
+      redirect_to "/"
+    end  
   end
 
   # GET /categories/1/edit
   def edit
+    if user_signed_in?  &&  current_user.admin == true
+    
+    else
+      redirect_to "/"
+    end  
   end
 
   # POST /categories

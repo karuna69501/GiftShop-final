@@ -34,11 +34,12 @@
         
         <% if user_signed_in? %>
           <li><a href="#">Hi <%= current_user.email %></a></li>
-          <li><%= link_to 'Log Out', destroy_user_session_path, :method => :delete %></li>
-          <li><%= link_to "History", "/orders"  %></li>
-          <% if current_user.admin? %>
+          <li><%= link_to "User Profile", edit_user_registration_path  %></li>
+          <li><%= link_to "My Orders", "/orders"  %></li>
+          <% if current_user.admin? == true %>
           <li><%= link_to "Admin", "/admin"  %></li>
-           <% end %>
+          <% end %>
+          <li><%= link_to 'Log Out', destroy_user_session_path, :method => :delete %></li>
         <% else %>
           <li><%= link_to 'Log In', new_user_session_path %></li>
           <li><%= link_to 'Sign Up', new_user_registration_path %></li> 
